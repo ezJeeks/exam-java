@@ -1,0 +1,10 @@
+th{
+    border: 1px solid;
+}
+td{
+    border: 1px solid;
+    padding: 5px;
+}
+.content{
+    margin: 10px;
+}

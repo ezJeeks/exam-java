@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout :: layout(~{::title},~{::section.content})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Teachers</title>
+</head>
+<body>
+<section class="content">
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Department</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="teacher : ${teachers}">
+            <td th:text="${teacher.getId()}"></td>
+            <td th:text="${teacher.getFirstName()}"></td>
+            <td th:text="${teacher.getLastName()}"></td>
+            <td>
+                <span th:each="department : ${teacher.getDepartment()}" th:text="${department.getName()}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

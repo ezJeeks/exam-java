@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout :: layout(~{::title},~{::section.content})}">
+<head>
+  <meta charset="UTF-8">
+  <title>Group add</title>
+</head>
+<body>
+<section class="content">
+  <form th:action="@{/group/add}" th:object="${group}" th:method="POST">
+    <div>
+      <p>
+        <label for="Name">Name:</label>
+        <input type="text" th:field="*{name}" id="Name">
+      </p>
+      <p>
+        <label for="faculty">Faculty:</label>
+        <select id="faculty" th:field="*{faculty}" required>
+          <option th:each="group : ${faculties}" th:value="${group.id}" th:text="${group.name}"></option>
+        </select>
+      </p>
+      <p>
+        <input type="submit" value="Submit">
+      </p>
+    </div>
+  </form>
+</section>
+</body>
+</html>

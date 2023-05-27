@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout :: layout(~{::title},~{::section.content})}">
+<head>
+  <meta charset="UTF-8">
+  <title>Books Loan</title>
+</head>
+<body>
+<section class="content">
+  <form th:action="@{/book-loan}" th:method="POST">
+    <label for="bookTitle">Book Title:</label>
+    <input type="text" id="bookTitle" name="bookTitle" required/>
+
+    <label for="studentId">Student:</label>
+    <select id="studentId" name="studentId" required>
+      <option th:each="student : ${students}" th:value="${student.id}" th:text="${student.firstName} + ' ' + ${student.lastName}"></option>
+    </select>
+
+    <label for="libId">Librarian:</label>
+    <select id="libId" name="librarianId" required>
+      <option th:each="librarian : ${librarians}" th:value="${librarian.id}" th:text="${librarian.firstName} + ' ' + ${librarian.lastName}"></option>
+    </select>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <div th:if="${errorMessage}" style="color: red" th:text="${errorMessage}"></div>
+  <div th:if="${successMessage}" style="color: green" th:text="${successMessage}"></div>
+</section>
+</body>
+</html>

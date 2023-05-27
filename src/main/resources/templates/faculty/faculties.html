@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout :: layout(~{::title},~{::section.content})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Faculties</title>
+</head>
+<body>
+<section class="content">
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="faculty : ${faculties}">
+            <td th:text="${faculty.getId()}"></td>
+            <td th:text="${faculty.getName()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

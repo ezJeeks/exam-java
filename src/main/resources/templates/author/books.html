@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout :: layout(~{::title},~{::section.content})}">
+<head>
+  <meta charset="UTF-8"><title>Title</title>
+  <title>Authors</title>
+</head>
+<body>
+<section class="content">
+<div th:each="author : ${authors}"  >
+
+  <span th:text="${author.getFirstName()}"></span>
+  <span th:text="${author.getLastName()}"></span>
+
+</div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+</body>
+</html>

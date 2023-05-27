@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout :: layout(~{::title},~{::section.content})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Books Search</title>
+</head>
+<body>
+<section class="content">
+<h1>Book Search</h1>
+
+<form th:action="@{/books/search}" th:method="get">
+    <div>
+        <label for="authorId">Author:</label><br>
+        <select id="authorId" name="authorId">
+            <option value="">All</option>
+            <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.firstName} + ' ' + ${author.lastName}"></option>
+        </select>
+    </div>
+
+    <div>
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title">
+    </div>
+
+    <div>
+        <label for="year">Year:</label><br>
+        <input type="text" id="year" name="year">
+    </div>
+
+    <div>
+        <label for="pressId">Press:</label><br>
+        <select id="pressId" name="pressId">
+            <option value="">All</option>
+            <option th:each="press : ${presses}" th:value="${press.id}" th:text="${press.name}"></option>
+        </select>
+    </div>
+
+    <div>
+        <label for="themeId">Theme:</label><br>
+        <select id="themeId" name="themeId">
+            <option value="">All</option>
+            <option th:each="theme : ${themes}" th:value="${theme.id}" th:text="${theme.name}"></option>
+        </select>
+    </div>
+
+    <div>
+        <label for="categoryId">Category:</label><br>
+        <select id="categoryId" name="categoryId">
+            <option value="">All</option>
+            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+        </select>
+    </div>
+    <br>
+
+    <button type="submit">Search</button>
+</form>
+    <br>
+
+<h2>Search Results</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>Press</th>
+        <th>Theme</th>
+        <th>Category</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.name}"></td>
+        <td>
+            <span th:each="author : ${book.getAuthors()}" th:text="${author.firstName + ' ' + author.lastName} + ', '"></span>
+        </td>
+        <td th:text="${book.year}"></td>
+        <td th:text="${book.press.name}"></td>
+        <td th:text="${book.theme.name}"></td>
+        <td th:text="${book.category.name}"></td>
+    </tr>
+    <tr th:if="${books.isEmpty()}">
+        <td colspan="4">No books found.</td>
+    </tr>
+    </tbody>
+</table>
+</section>
+</body>
+</html>

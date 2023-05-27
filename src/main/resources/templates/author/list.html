@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout :: layout(~{::title},~{::section.content})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section class="content">
+  <div th:each="author : ${authors}"  >
+
+    <span th:text="${author.getFirstName()}"></span>
+    <span th:text="${author.getLastName()}"></span>
+
+  </div>
+</section>
+</body>
+</html>

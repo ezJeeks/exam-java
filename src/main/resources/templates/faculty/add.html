@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout :: layout(~{::title},~{::section.content})}">
+<head>
+  <meta charset="UTF-8">
+  <title>Faculty add</title>
+</head>
+<body>
+<section class="content">
+  <form th:action="@{/faculty/add}" th:object="${faculty}" th:method="POST">
+    <div>
+      <p>
+        <label for="Name">Name:</label>
+        <input type="text" th:field="*{name}" id="Name">
+      </p>
+      <p>
+        <input type="submit" value="Submit">
+      </p>
+    </div>
+  </form>
+</section>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout :: layout(~{::title},~{::section.content})}">
+<head>
+  <meta charset="UTF-8">
+  <title>Books Available</title>
+</head>
+<body>
+  <section class="content">
+    <h5>Информацией о всех книгах, которые есть в наличии</h5>
+    <table>
+      <thead>
+      <tr>
+        <th>Название</th>
+        <th>Категория</th>
+        <th>Тематика</th>
+        <th>Год издания</th>
+        <th>Издательство</th>
+        <th>Количество страниц</th>
+        <th>Авторы</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="book : ${books}">
+        <td th:text="${book.getName()}"></td>
+        <td th:text="${book.getCategory().getName()}"></td>
+        <td th:text="${book.getTheme().getName()}"></td>
+        <td th:text="${book.getYear()}"></td>
+        <td th:text="${book.getPress().getName()}"></td>
+        <td th:text="${book.getPages()}"></td>
+        <td>
+          <span th:each="author : ${book.getAuthors()}" th:text="${author.getFirstName() + ' ' + author.getLastName()} + ', '"></span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</body>
+</html>

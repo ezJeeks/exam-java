@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout :: layout(~{::title},~{::section.content})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Author</title>
+</head>
+<body>
+<section class="content">
+    <h2>Add Author</h2>
+    <form th:action="@{/authors}" th:object="${author}" th:method="POST">
+        <div>
+            <p>
+                <label for="FirstName">First Name:</label>
+                <input type="text" th:field="*{firstName}" id="FirstName">
+            </p>
+            <p>
+                <label for="LastName">Last Name:</label>
+                <input type="text" th:field="*{lastName}" id="LastName">
+            </p>
+            <p>
+                <input type="submit" value="Submit">
+            </p>
+        </div>
+    </form>
+</section>
+</body>
+</html>
